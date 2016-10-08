@@ -1,0 +1,17 @@
+{
+  "username": "ololobot",
+  "channel": "ololochan",
+  "text": "Lol, I'm a <http://zombo.com|robot>!",
+  "attachments": [
+    {
+      "color": "danger",
+      "text": "Warning All The Things Is Broken!",
+      "fields": [
+        {
+          "title": "Warning",
+          "value": "Ololo incoming!"
+        }
+      ]
+    }
+  ]
+}

@@ -42,5 +42,3 @@
       (is (= tg-message
              "*ololobot*: Lol, I'm a [robot](http://zombo.com)!\n\n❌ Warning All The Things Is Broken!\n▫ Warning: Ololo incoming!")))))
 
-(deftest test-send-message
-  (tg-bot/proxy-payload payload))

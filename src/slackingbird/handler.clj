@@ -7,15 +7,19 @@
             [slackingbird.telegram.bot :as tg]
             [ring.middleware.defaults :refer [wrap-defaults api-defaults]]))
 
+(tg/start-bot (config/bot-token))
+
 (defroutes app-routes
-  (POST "/hooker/:chat-id/hook" [chat-id] 
-    (fn [{body :body}]
-      (let [payload (slack/json->payload (slurp body))]        
+  (POST "/slack/:chat-id" [chat-id] 
+    (fn [req]
+      (let [body (:body req)
+            json (or (-> req :params :payload) (slurp body))
+            payload (slack/json->payload json)]
         (tg/proxy-payload (config/bot-token)
                           chat-id 
                           payload))))
 
   (route/not-found "Not Found"))
 
-(def app
+(def app  
   (wrap-defaults app-routes api-defaults))

@@ -32,7 +32,7 @@
     (is (nil? (tg/format-attachment nil)))
     (let [attachment (first (:attachments payload))
           tg-string (tg/format-attachment attachment)]
-      (is (= tg-string "❌ Warning All The Things Is Broken!\n▫ Warning: Ololo incoming!")))))
+      (is (= tg-string "❌ Warning All The Things Are Broken!\n▫ Warning: Ololo incoming!")))))
     
 (deftest test-telegram-message-formatting
   (testing "format-message should properly transform Webhook Payload record to string"
@@ -40,5 +40,5 @@
     (let [tg-message (tg/format-message payload)]
       (is (not (nil? tg-message)))
       (is (= tg-message
-             "*ololobot*: Lol, I'm a [robot](http://zombo.com)!\n\n❌ Warning All The Things Is Broken!\n▫ Warning: Ololo incoming!")))))
+             "*ololobot*: Welcome to [Zombo Com](http://zombo.com)!\n\n❌ Warning All The Things Are Broken!\n▫ Warning: Ololo incoming!")))))
 

@@ -6,20 +6,22 @@
 (defn slack-color->emoji [color-string]
   (case color-string
     "good"    "✅"
-    "warning" "⚠"
+    "warning" "⚠️"
     "danger"  "❌"
               "⭕"))
 
 (defn format-field [field]  
   (if (nil? field)
     nil
-    (format "▫ %s: %s" (:title field) (:value field))))
+    (format "▫ %s: %s" 
+            (markdownize (:title field)) 
+            (markdownize (:value field)))))
 
 (defn format-attachment [attachment]
   (if (nil? attachment)
     nil
     (let [emoji (slack-color->emoji (:color attachment))
-          text (:text attachment)
+          text (markdownize (:text attachment))
           fields (str/join "\n" (map format-field (:fields attachment)))]
       (format "%s %s\n%s" emoji text fields))))
     
@@ -28,9 +30,9 @@
     nil
     (let [bot-name (:username payload)
           text (markdownize (:text payload))
-          attachments (str/join "\n" (map format-attachment (:attachments payload)))]
-      (format "*%s*: %s\n\n%s" 
-              bot-name
+          attachments (str/join "\n" (map format-attachment (:attachments payload)))]      
+      (format "*%s*%s\n\n%s"
+              (if-not (empty? bot-name) (str bot-name ": ") "")
               text
               attachments))))
 

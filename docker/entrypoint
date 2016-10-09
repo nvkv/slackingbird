@@ -1,0 +1,4 @@
+#!/bin/sh
+# -*- mode: bash -*-
+
+java -jar /app/slackingbird.jar

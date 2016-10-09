@@ -1,11 +1,11 @@
 {
   "username": "ololobot",
   "channel": "ololochan",
-  "text": "Lol, I'm a <http://zombo.com|robot>!",
+  "text": "Welcome to <http://zombo.com|Zombo Com>!",
   "attachments": [
     {
       "color": "danger",
-      "text": "Warning All The Things Is Broken!",
+      "text": "Warning All The Things Are Broken!",
       "fields": [
         {
           "title": "Warning",

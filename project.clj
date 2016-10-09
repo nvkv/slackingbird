@@ -3,6 +3,7 @@
   :url "https://github.com/semka/slackingbird"
   :min-lein-version "2.0.0"
   :dependencies [[org.clojure/clojure "1.8.0"]
+                 [org.clojure/core.async "0.2.391"]
                  [compojure "1.5.1"]
                  [cheshire "5.6.3"]
                  [ring/ring-defaults "0.2.1"]

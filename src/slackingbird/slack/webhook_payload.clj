@@ -1,5 +1,5 @@
 (ns slackingbird.slack.webhook-payload
-  (:require [cheshire.core :refer :all]))
+  (:require [cheshire.core :as json]))
 
 (defrecord WebhookPayload  
   [text
@@ -21,12 +21,13 @@
    image_url
    footer])
 
-(defn json->payload [json-string]
+(defn json->payload [json-string]  
   (try
     (as-> json-string x
-          (parse-string x true)
+          (json/parse-string x true)
           (map->WebhookPayload x)
           (assoc x
                  :attachments 
                  (map #(map->MessageAttachment %) (:attachments x))))
-  (catch Exception e nil)))
+  (catch Exception e 
+    (println e))))

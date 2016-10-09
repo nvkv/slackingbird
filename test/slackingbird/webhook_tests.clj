@@ -9,12 +9,12 @@
   (testing "json->payload should be able to create proper WebhookPayload record from the valid JSON"
     (let [json (slurp (-> "test-payload.json" io/resource io/file))
           payload (json->payload json)]
-      (is (= (:text payload) "Lol, I'm a <http://zombo.com|robot>!"))
+      (is (= (:text payload) "Welcome to <http://zombo.com|Zombo Com>!"))
       (is (= (:username payload) "ololobot"))
       (is (= (count (:attachments payload)) 1))
       (let [attach (first (:attachments payload))]
         (is (= (:color attach) "danger"))
-        (is (= (:text attach) "Warning All The Things Is Broken!"))
+        (is (= (:text attach) "Warning All The Things Are Broken!"))
         (is (= (count (:fields attach)) 1))))))
 
 (deftest test-malformed-json-parsing

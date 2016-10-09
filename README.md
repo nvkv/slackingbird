@@ -39,5 +39,3 @@ $ lein ring server
 ## Start Using
 
 Add your bot to the group and fire `/hook` command. Bot will reply with webhook URL.
-
-![](http://take.ms/gynau)

@@ -16,7 +16,7 @@
 (deftest test-color->emoji
   (testing "Default slack 'colors' should be convertable to emojis"
     (is (= (tg/slack-color->emoji "danger")   "❌"))
-    (is (= (tg/slack-color->emoji "warning")  "⚠"))
+    (is (= (tg/slack-color->emoji "warning")  "⚠️"))
     (is (= (tg/slack-color->emoji "good")     "✅"))
     (is (= (tg/slack-color->emoji "whatever") "⭕"))))
 
@@ -40,5 +40,5 @@
     (let [tg-message (tg/format-message payload)]
       (is (not (nil? tg-message)))
       (is (= tg-message
-             "*ololobot*: Welcome to [Zombo Com](http://zombo.com)!\n\n❌ Warning All The Things Are Broken!\n▫ Warning: Ololo incoming!")))))
+             "*ololobot: *Welcome to [Zombo Com](http://zombo.com)!\n\n❌ Warning All The Things Are Broken!\n▫ Warning: Ololo incoming!")))))
 

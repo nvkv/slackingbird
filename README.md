@@ -16,7 +16,7 @@ token
 
 Slackingbird is configured via environment variables:
 
-- `SB_TELEGRAM_BOT_TOKEN` — token for you bot
+- `SB_TELEGRAM_BOT_TOKEN` — token of a bot
 - `SB_BASE_URL` — base domain name of the server Slackingbird deployed to. Slackingbird using this string 
 to respond to the `/hook` command only
 

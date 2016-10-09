@@ -19,6 +19,7 @@
              {:content-type :json
               :form-params {"chat_id" chat-id
                             "text" message
+                            "disable_web_page_preview" true
                             "parse_mode" "Markdown"}}))
 
 (defn proxy-payload [bot-token chat-id payload]

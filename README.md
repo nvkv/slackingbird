@@ -9,7 +9,7 @@ webhooks now can be integrated into the Telegram.
 
 - [A bot](https://core.telegram.org/bots#3-how-do-i-create-a-bot) and its 
 token
-- Publically accessible server
+- Publicly accessible server
 - If you want to build Slackingbird from source, you will need [Leiningen](https://github.com/technomancy/leiningen) 2.0.0 or above installed.
 
 ## Installing

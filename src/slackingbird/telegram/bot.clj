@@ -38,18 +38,18 @@
                               (format "%s, hook for this conversation is:\n*%s*" sender hook-url))
         nil)
       (println (str "Ok, processing update: " text)))))
-  
+
 (defn start-bot [bot-token]
   (def offset (atom 0))
   (async/thread
-      (while true
-        (try         
-          (let [result (json/parse-string (:body (http/get (updates-url bot-token @offset))) true)
-                updates (:result result)
-                last-update-id (:update_id (last updates))]
-            (process-updates bot-token updates)
-            (if-not (nil? last-update-id)
-              (swap! offset (fn [_] (inc last-update-id))))
-            (Thread/sleep 1000))
-          (catch Exception e 
-            (println e))))))
+    (while true
+      (try         
+        (let [result (json/parse-string (:body (http/get (updates-url bot-token @offset))) true)
+              updates (:result result)
+              last-update-id (:update_id (last updates))]
+          (process-updates bot-token updates)
+          (if-not (nil? last-update-id)
+            (swap! offset (fn [_] (inc last-update-id))))
+          (Thread/sleep 1000))
+        (catch Exception e 
+          (println e))))))

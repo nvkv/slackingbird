@@ -8,7 +8,6 @@
                  [cheshire "5.6.3"]
                  [ring/ring-defaults "0.2.1"]
                  [clj-http "2.3.0"]]
-  :resource-paths ["src/main/resources"]
   :plugins [[lein-ring "0.9.7"]]
   :ring {:handler slackingbird.handler/app}
   :profiles {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]

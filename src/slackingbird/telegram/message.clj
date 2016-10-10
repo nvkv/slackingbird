@@ -10,10 +10,10 @@
     "danger"  "❌"
               "⭕"))
 
-(defn format-field [field]  
+(defn format-field [field]
   (if (nil? field)
     nil
-    (format "▫ %s: %s" 
+    (format "▫ %s: %s"
             (markdownize (:title field)) 
             (markdownize (:value field)))))
 

@@ -1,0 +1,2 @@
+[hosts]
+slackingbird ansible_host=<host-goes-here>

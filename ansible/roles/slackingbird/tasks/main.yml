@@ -1,0 +1,26 @@
+---
+
+- name: Create app directory
+  file: 
+    dest: "{{ install_dir }}"
+    state: directory
+
+- name: Deploy envfile
+  template:
+    src: envfile
+    dest: "{{ install_dir }}/envfile"
+
+- name: Pull fresh Slackingbird docker image
+  docker_image:
+    name: sdfgh153/slackingbird    
+    force: yes # force update image each time 
+
+- name: Run Slackingbird container
+  docker_container:
+    name: slackingbird
+    image: sdfgh153/slackingbird
+    state: started
+    restart: yes
+    env_file: "{{ install_dir }}/envfile"
+    ports:
+      - 3000:3000      

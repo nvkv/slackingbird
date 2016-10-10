@@ -23,4 +23,4 @@
     restart: yes
     env_file: "{{ install_dir }}/envfile"
     ports:
-      - 3000:3000      
+      - "{{ binding_port }}:3000"

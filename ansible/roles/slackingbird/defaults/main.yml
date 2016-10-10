@@ -1,3 +1,4 @@
 ---
 
 install_dir: /opt/apps/slackingbird
+binding_port: 3000

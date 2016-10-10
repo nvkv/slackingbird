@@ -6,5 +6,5 @@
     - telegram_bot_token: "<token-goes-here>"
     - base_url: "<base-url-goes-here>"
     #- install_dir: "you can customize install dir too"
-  reles:
+  roles:
     - slackingbird

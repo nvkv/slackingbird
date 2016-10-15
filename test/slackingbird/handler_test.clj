@@ -1,6 +1,6 @@
 (ns slackingbird.handler-test
   (:require [clojure.test :refer :all]
-            [ring.mock.request :as mock]            
+            [ring.mock.request :as mock]
             [slackingbird.handler :refer :all]))
 
 (deftest test-app

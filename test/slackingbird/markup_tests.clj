@@ -1,7 +1,7 @@
 (ns slackingbird.markup-tests
   (:require [clojure.test :refer :all]
             [ring.mock.request :as mock]
-            [clojure.java.io :as io]            
+            [clojure.java.io :as io]
             [slackingbird.slack.markup :refer :all]))
 
 (deftest test-links-transformation

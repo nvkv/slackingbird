@@ -1,0 +1,6 @@
+language: clojure
+install: lein install
+script: lein test
+sudo: false
+jdk:
+  - oraclejdk8

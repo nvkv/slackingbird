@@ -30,7 +30,7 @@
     nil
     (let [bot-name (:username payload)
           text (markdownize (:text payload))
-          attachments (str/join "\n" (map format-attachment (:attachments payload)))]      
+          attachments (str/join "\n" (map format-attachment (:attachments payload)))]
         (format "*%s*%s\n\n%s"
               (if-not (empty? bot-name) (str bot-name ": ") "")
               text

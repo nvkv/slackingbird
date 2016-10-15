@@ -10,16 +10,17 @@
 (tg/start-bot (config/bot-token))
 
 (defroutes app-routes
-  (POST "/slack/:chat-id" [chat-id] 
+  (POST "/slack/:chat-id" [chat-id]
     (fn [req]
       (let [body (:body req)
             json (or (-> req :params :payload) (slurp body))
             payload (slack/json->payload json)]
+        (println (str "DEBUG: " json))
         (tg/proxy-payload (config/bot-token)
-                          chat-id 
+                          chat-id
                           payload))))
 
   (route/not-found "Not Found"))
 
-(def app  
+(def app
   (wrap-defaults app-routes api-defaults))

@@ -1,14 +1,14 @@
 (ns slackingbird.slack.webhook-payload
   (:require [cheshire.core :as json]))
 
-(defrecord WebhookPayload  
+(defrecord WebhookPayload
   [text
    username
-   channel 
+   channel
    attachments])
 
-(defrecord MessageAttachment   
-  [fallback 
+(defrecord MessageAttachment
+  [fallback
    color
    pretext
    author_name
@@ -21,13 +21,13 @@
    image_url
    footer])
 
-(defn json->payload [json-string]  
+(defn json->payload [json-string]
   (try
     (as-> json-string x
           (json/parse-string x true)
           (map->WebhookPayload x)
           (assoc x
-                 :attachments 
+                 :attachments
                  (map #(map->MessageAttachment %) (:attachments x))))
-  (catch Exception e 
+  (catch Exception e
     (println e))))

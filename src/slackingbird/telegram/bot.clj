@@ -8,7 +8,7 @@
 (defn base-url [bot-token]
   (format "https://api.telegram.org/bot%s" bot-token))
 
-(defn hook-url [bot-token] 
+(defn hook-url [bot-token]
   (format "%s/sendMessage" (base-url bot-token)))
 
 (defn updates-url [bot-token offset]
@@ -23,6 +23,7 @@
                             "parse_mode" "Markdown"}}))
 
 (defn proxy-payload [bot-token chat-id payload]
+  (println (format-message payload))
   (if-not (nil? payload)
     (send-message bot-token chat-id (format-message payload))))
 
@@ -32,7 +33,7 @@
           chat-id (-> update :message :chat :id)
           sender (-> update :message :from :first_name)
           hook-url (format "%s/slack/%d" (config/base-url) chat-id)]
-      (case text 
+      (case text
         "/hook" (send-message bot-token
                               chat-id
                               (format "%s, hook for this conversation is:\n*%s*" sender hook-url))
@@ -43,7 +44,7 @@
   (def offset (atom 0))
   (async/thread
     (while true
-      (try         
+      (try
         (let [result (json/parse-string (:body (http/get (updates-url bot-token @offset))) true)
               updates (:result result)
               last-update-id (:update_id (last updates))]
@@ -51,5 +52,5 @@
           (if-not (nil? last-update-id)
             (swap! offset (fn [_] (inc last-update-id))))
           (Thread/sleep 1000))
-        (catch Exception e 
-          (println e))))))
+        (catch Exception e
+          (println (str "Bot running exception: " e)))))))

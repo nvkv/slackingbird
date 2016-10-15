@@ -1,5 +1,7 @@
 # slackingbird
 
+[![Build Status](https://travis-ci.org/semka/slackingbird.svg?branch=master)](https://travis-ci.org/semka/slackingbird)
+
 Everything in the world can be integrated with ~~Slack~~ Telegram.
 
 Slackingbird provides webhooks compatible with Slack webhooks so anything you integrate into the Slack with 

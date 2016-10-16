@@ -2,10 +2,9 @@
   (:require [clojure.string :as str]
             [clojure.core.reducers :as r]))
 
-(defn markdownize [string]
-  """
-  This function is a nightmare
-  """
+(defn markdownize
+  "This function is a nightmare"
+  [string]
   (let [str (as-> string x (str/replace x "_" "\\_")
                            (str/replace x #"<([^|\s]+?)>" "$1")
                            (str/replace x #"<(\S+?)\|(.*?)>" "[$2]($1)"))

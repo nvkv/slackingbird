@@ -28,6 +28,6 @@
           (map->WebhookPayload x)
           (assoc x
                  :attachments
-                 (map #(map->MessageAttachment %) (:attachments x))))
+                 (map map->MessageAttachment (:attachments x))))
   (catch Exception e
     (println e))))

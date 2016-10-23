@@ -8,7 +8,7 @@
                  [cheshire "5.6.3"]
                  [ring/ring-defaults "0.2.1"]
                  [clj-http "2.3.0"]]
-  :plugins [[lein-ring "0.9.7"]]
+  :plugins [[lein-ring "0.9.7"] [lein-kibit "0.1.2"]]
   :ring {:handler slackingbird.handler/app}
   :profiles {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
                                   [ring/ring-mock "0.3.0"]]

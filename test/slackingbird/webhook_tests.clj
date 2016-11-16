@@ -22,7 +22,3 @@
     (let [json (slurp (-> "test-invalid.json" io/resource io/file))
           payload (json->payload json)]
       (is (nil? payload)))))
-
-
-      
-    

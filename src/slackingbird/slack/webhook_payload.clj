@@ -5,6 +5,7 @@
   [text
    username
    channel
+   title
    attachments])
 
 (defrecord MessageAttachment

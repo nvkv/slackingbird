@@ -16,6 +16,7 @@
             json (or (-> req :params :payload) (slurp body))
             payload (slack/json->payload json)]
         (println (str "DEBUG: " json))
+        (println (str "DEBUG: " (into {} payload)))
         (tg/proxy-payload (config/bot-token)
                           chat-id
                           payload))))

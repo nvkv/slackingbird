@@ -21,18 +21,24 @@
   (if (nil? attachment)
     nil
     (let [emoji (slack-color->emoji (:color attachment))
+          title (:title attachment)
           text (markdownize (or (:text attachment) "Attachments:"))
           fields (str/join "\n" (map format-field (:fields attachment)))]
-      (format "%s %s\n%s" emoji text fields))))
+      (format "%s%s %s\n%s"
+        emoji
+        (if-not (empty? title) (format " *%s*" title) "")
+        text
+        fields))))
 
 (defn format-message [payload]
   (if (nil? payload)
     nil
     (let [bot-name (:username payload)
+          title (:title payload)
           text (markdownize (:text payload))
           attachments (str/join "\n" (map format-attachment (:attachments payload)))]
-        (format "*%s*%s\n\n%s"
+        (format "*%s*%s%s\n\n%s"
               (if-not (empty? bot-name) (str bot-name ": ") "")
+              (if-not (empty? title) (str title "\n") "")
               text
               attachments))))
-

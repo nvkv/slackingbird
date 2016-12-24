@@ -34,7 +34,7 @@
     (let [emoji (slack-color->emoji (:color attachment))
           text (markdownize (or (:text attachment) "Attachments:"))
           fields (str/join "\n" (map format-field (:fields attachment)))]
-      (format "%s %s %s\n%s"
+      (format "%s%s %s\n%s"
         emoji
         (format-attachment-title attachment)
         text

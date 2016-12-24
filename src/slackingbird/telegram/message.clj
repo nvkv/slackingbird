@@ -17,16 +17,26 @@
             (markdownize (:title field))
             (markdownize (:value field)))))
 
+(defn format-attachment-title [attachment]
+  (if (empty? (:title attachment))
+    ""
+    ; HACK: Thank you, Pasha, for shitty markdown implementation
+    (let [title (as-> (:title attachment) x (str/replace x "[" "(")
+                                            (str/replace x "]" ")"))
+          link  (:title_link attachment)]
+      (if-not (nil? link)
+        (format " [%s](%s)" title link)
+        (format " *%s*" title)))))
+
 (defn format-attachment [attachment]
   (if (nil? attachment)
     nil
     (let [emoji (slack-color->emoji (:color attachment))
-          title (:title attachment)
           text (markdownize (or (:text attachment) "Attachments:"))
           fields (str/join "\n" (map format-field (:fields attachment)))]
-      (format "%s%s %s\n%s"
+      (format "%s %s %s\n%s"
         emoji
-        (if-not (empty? title) (format " *%s*" title) "")
+        (format-attachment-title attachment)
         text
         fields))))
 
